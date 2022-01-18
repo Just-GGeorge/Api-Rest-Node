@@ -53,13 +53,13 @@ class Atendimento {
     }
     buscaPorID(id,res){
         
-        const sql = 'SELECT * FROM Atendimentos where id=1'
-        conexao.query(sql,(erro,resultados) => {
+        const sql = 'SELECT * FROM Atendimentos where id=?'
+        conexao.query(sql,id,(erro,resultados) => {
             const oatendimento = resultados[0]
             if(erro){
                 res.status(400).json(erro)
             }else{
-                res.status(200).json(oatendimento)
+                res.status(200).json(resultados)
             }
         })
     }
